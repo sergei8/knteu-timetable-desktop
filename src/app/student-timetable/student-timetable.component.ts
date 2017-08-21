@@ -7,9 +7,8 @@ import {
   weekNames,
   dayNamesList,
   paraNamberList,
-  menuItemNames,
   DataService,
-  globalSwitches
+  sharedData
 } from '../data.service';
 
 import * as _ from 'lodash';
@@ -69,16 +68,16 @@ export class StudentTimetableComponent  {
   }
 
   goToTeacherTable(teacherName) {
-    console.log(teacherName);
+    //console.log(teacherName);
     teacherFormResponse.teacherName = teacherName;
-    console.log(teacherFormResponse);
-    globalSwitches.studentButtonClicked = false;
-    this.teacherButtonClicked = globalSwitches.teacherButtonClicked = true;
+    //console.log(teacherFormResponse);
+    sharedData.studentButtonClicked = false;
+    this.teacherButtonClicked = sharedData.teacherButtonClicked = true;
   }
 
   // перейти на начало таблицы
   goTop() {
-    const element = document.querySelector('#buttonsPanel');
+    let element = document.querySelector('#buttonsPanel');
     if (element) {
       element.scrollIntoView();
     }

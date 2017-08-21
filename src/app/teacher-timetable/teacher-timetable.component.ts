@@ -8,7 +8,7 @@ import {
   dayNamesList,
   paraNamberList,
   menuItemNames,
-  globalSwitches,
+  sharedData,
   DataService
 } from '../data.service';
 
@@ -139,8 +139,8 @@ export class TeacherTimetableComponent implements OnInit, OnDestroy {
     studentFormResponse.facName = facName;
     studentFormResponse.courseNumber = courseNumber;
     studentFormResponse.groupNumber = groupNumber;
-    globalSwitches.teacherButtonClicked = false;
-    this.studentButtonClicked = globalSwitches.studentButtonClicked = true;
+    sharedData.teacherButtonClicked = false;
+    this.studentButtonClicked = sharedData.studentButtonClicked = true;
   }
 
 }

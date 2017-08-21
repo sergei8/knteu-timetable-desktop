@@ -1,3 +1,50 @@
+<div class="container-fluid">
+  <div class="span12">
+    <h3 class="col-xs-12 col-sm-offset-3 col-sm-6  text-center text-info  table-title">
+      <span class="glyphicon glyphicon-calendar"></span>
+      Завантаження аудиторії № {{roomNumber}}
+    </h3>
+  </div>
 
+  <table class="table table-bordered table-striped">
+    <tbody>
+    <template ngFor let-week [ngForOf]="[0,1]">
+      <tr>
+        <td rowspan="2" class="para">Пара</td>
+        <td class="week" colspan="6">{{weekNames[week]}}</td>
+      </tr>
+      <tr>
+        <template ngFor let-dayNumber [ngForOf]="[0,1,2,3,4]">
+          <td class="day">{{dayNamesList[dayNumber]}}</td>
+        </template>
+      </tr>
+      <template ngFor let-para [ngForOf]="[0,1,2,3,4,5,6]">
+        <tr>
+          <td class="day">{{para+1}}</td>
+          <template ngFor let-day [ngForOf]="[0,1,2,3,4]">
+            <td [ngClass]="(getCell(week,day,para) === undefined) ? '' : 'info' ">
+              <b>{{getCell(week,day,para,0)}} </b>
+              {{getCell(week,day,para,1)}} <br>
+              <a (click)="goToTeacherTable(getCell(week,day,para,2))"
+                 title="дивитись розклад викладача">
+                {{getCell(week,day,para,2)}}
+              </a>
+              <!--<b>{{getCell(week,day,para,2)}} </b>-->
+              {{getCell(week,day,para,3)}}
+              {{getCell(week,day,para,4)}}
+              <span *ngIf="getCell(week,day,para) !== undefined">/</span>
+              {{getCell(week,day,para,5)}}
+            </td>
+          </template>
+        </tr>
+      </template>
+    </template>
+    </tbody>
+  </table>
 
-  <div> room-timetable works!  {{roomNumber}}</div>
+</div>
+
+<!--перейти на начало таблицы-->
+<p>{{goTop()}}</p>
+
+<tt-teacher-timetable *ngIf="teacherButtonClicked"></tt-teacher-timetable>

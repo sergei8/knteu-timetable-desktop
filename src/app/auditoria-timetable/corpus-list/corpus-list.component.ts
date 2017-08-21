@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, ViewChild} from '@angular/core';
-import {DataService, globalSwitches} from '../../data.service';
+import {DataService, sharedData} from '../../data.service';
 import {ModalDirective} from 'ng2-bootstrap';
 
 
@@ -20,7 +20,7 @@ export class CorpusListComponent implements OnInit {
 
   emptyRoomList: string[];
   private corpusLeter: string;
-  private roomNumber:string;
+  private roomNumber: string;
 
   constructor(private dataService: DataService) {
   }
@@ -61,12 +61,16 @@ export class CorpusListComponent implements OnInit {
     this.corpusLeter = corpus;
 
     // console.log('Detail!', week);
+    let t1 = Date.now();
     let busyRoomList = this.getBusyRoomList();
     let emptyRoomList = _.difference(this.dataService.getAuditoriaList(), busyRoomList);
     let emptyRoomByCorpus = _.groupBy(emptyRoomList, (room) => room[0]);
     //console.log(emptyRoomByCorpus[corpus].sort());
-    this.emptyRoomList = emptyRoomByCorpus[corpus].sort()
-    console.log(this.emptyRoomList);
+    this.emptyRoomList = emptyRoomByCorpus[corpus].sort();
+    let t2 = Date.now();
+    console.log((t2 - t1) / 1000);
+
+    // console.log(this.emptyRoomList);
   };
 
   // create busy rooms per week-day-para
@@ -90,9 +94,9 @@ export class CorpusListComponent implements OnInit {
 
   showRoom(roomNumber) {
     console.log(roomNumber);
-    globalSwitches.selectedRoom = roomNumber;
-    globalSwitches.roomClicked = true;
-    globalSwitches.auditoriaButtonClicked = false;
+    sharedData.selectedRoom = roomNumber;
+    sharedData.roomClicked = true;
+    sharedData.auditoriaButtonClicked = false;
   }
 
 }

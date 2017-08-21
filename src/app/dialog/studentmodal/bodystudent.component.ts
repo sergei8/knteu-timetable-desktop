@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DataService, menuItemNames, globalSwitches, studentFormResponse} from '../../data.service';
+import {DataService, menuItemNames, sharedData, studentFormResponse} from '../../data.service';
 
 @Component({
   selector: 'tt-bodystudent',

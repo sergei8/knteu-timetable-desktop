@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {globalSwitches} from './data.service';
+import {sharedData} from './data.service';
 
 @Component({
   selector: 'tt-root',
@@ -10,18 +10,18 @@ export class AppComponent {
 
 
   isStudentButtonClicked() {
-    return globalSwitches.studentButtonClicked;
+    return sharedData.studentButtonClicked;
   }
 
   isTeacherButtonClicked() {
-    return globalSwitches.teacherButtonClicked;
+    return sharedData.teacherButtonClicked;
   }
 
   isAuditoriaButtonClicked() {
-    return globalSwitches.auditoriaButtonClicked;
+    return sharedData.auditoriaButtonClicked;
   }
 
   isRoomClicked() {
-    return globalSwitches.roomClicked;
+    return sharedData.roomClicked;
   }
 }
