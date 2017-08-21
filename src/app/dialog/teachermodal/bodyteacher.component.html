@@ -1,0 +1,22 @@
+<div class="row form-group">
+  <div class="col-xs-10 col-xs-offset-1  col-sm-8 col-sm-offset-2">
+    <input [(ngModel)]="selectedTeacher"
+           [typeahead]="getFullTeacherList()"
+           (typeaheadOnSelect)="teacherSelected($event)"
+           class="form-control" type="text"
+           placeholder="Почніть вводити прізвище викладача">
+    <!--<span class="glyphicon glyphicon-remove-circle"></span>-->
+  </div>
+</div>
+
+
+<div class="row form-group">
+  <div class="col-xs-10 col-xs-offset-1  col-sm-8 col-sm-offset-2">
+    <select class="form-control" [disabled]="isTeacherNotSelected"
+            (click)="getDiscipline($event.target.value)"
+            (change)="getDiscipline($event.target.value)">
+      <option *ngFor="let discipline of disciplineList">{{discipline}}</option>
+    </select>
+  </div>
+</div>
+

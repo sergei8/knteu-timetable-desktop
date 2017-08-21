@@ -1,0 +1,36 @@
+<modal #modalDlgWindow [keyboard]="true" [backdrop]="'static'" >
+  <form class="my-dialogies">
+    <modal-header [show-close]="false">
+      <button type="button" class="close" data-dismiss="modal"
+              (click)="cancel();" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <h4 class="modal-title text-center text-success" >РОЗКЛАД ЗАНЯТЬ ГРУПИ</h4>
+    </modal-header>
+
+    <modal-body>
+      <tt-bodystudent></tt-bodystudent>
+    </modal-body>
+
+    <modal-footer>
+      <div class="row">
+        <div class="col-xs-offset-3 col-xs-6 col-sm-offset-1 col-sm-4">
+          <button class="btn btn-primary outline btn-block" (click)="cancel();">
+            <span class="glyphicon glyphicon-remove-circle gly-size">&nbsp;</span>
+            Відмовитись
+          </button>
+        </div>
+        <div class="col-xs-offset-3 col-xs-6 col-sm-offset-2 col-sm-4">
+          <!-- enabled when all controls have been selected -->
+          <button class="btn btn-primary outline btn-block" (click)="processForm();"
+             [disabled]="dlgStudent.isLearningFormSelected ||
+             dlgStudent.isFacNameSelected || dlgStudent.isCourseSelected ||
+             dlgStudent.isGroupSelected" href="#buttonsPanel" >
+            <span class="glyphicon glyphicon-ok-circle gly-size">&nbsp;</span>
+            Дивитись
+          </button>
+        </div>
+      </div>
+    </modal-footer>
+  </form>
+</modal>

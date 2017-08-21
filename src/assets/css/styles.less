@@ -1,0 +1,260 @@
+@my-bgcolor: #343434;
+@dlg-bgcolor: gray;
+@table-color: #343434;
+
+body {
+  align: center;
+  padding: 50px 0px 0px 0px;
+  z-index: 0;
+}
+
+#navPanel {
+  padding: 0 1em 0 0;
+  .navbar-header {
+    button {
+      border-color: transparent !important;
+    }
+    button:hover {
+      background-color: transparent !important;
+    }
+  }
+}
+
+.row-header {
+  margin: 0px auto;
+  padding: 0px 10px 0;
+}
+
+.row-content {
+  margin: 0px auto;
+  padding: 30px 0px;
+  border-bottom: 1px ridge;
+  background-color: @my-bgcolor;
+}
+
+.row-footer {
+  background-color: #b0a8ab;
+  color: @my-bgcolor;
+  height: 4em !important;
+  padding: 1.5em 0 !important;
+}
+
+#my-navbar.navbar-default { /* #003399 - #0033cc */
+  font-size: 14px;
+  background-color: @my-bgcolor;
+  background: @my-bgcolor;
+  //background: linear-gradient(to bottom, rgba(0, 0, 220, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  border: 0px;
+  border-radius: 0;
+}
+
+#my-navbar.navbar-default .navbar-nav > li > a:hover,
+#my-navbar.navbar-default .navbar-nav > li > a:focus,
+#my-navbar.navbar-default .navbar-nav > li > ul > li > a:hover,
+#my-navbar.navbar-default .navbar-nav > li > ul > li > a:focus,
+#my-navbar.navbar-default .navbar-nav > .active > a,
+#my-navbar.navbar-default .navbar-nav > .active > a:hover,
+#my-navbar.navbar-default .navbar-nav > .active > a:focus {
+  color: rgba(51, 51, 51, 1);
+  background-color: @my-bgcolor;
+  /*
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  */
+}
+
+#my-navbar.navbar-default .navbar-toggle {
+  border-color: #333399;
+}
+
+#my-navbar.navbar-default .navbar-toggle:hover,
+#my-navbar.navbar-default .navbar-toggle:focus {
+  background-color: #3333cc;
+}
+
+#my-navbar.navbar-default .navbar-nav > li > a,
+#my-navbar.navbar-default .navbar-nav > li > ul > li > a,
+#my-navbar.navbar-default .navbar-brand {
+  color: #999999;
+}
+
+#my-navbar.navbar-default .navbar-toggle .icon-bar,
+#my-navbar.navbar-default .navbar-toggle:hover .icon-bar,
+#my-navbar.navbar-default .navbar-toggle:focus .icon-bar {
+  background-color: #ffffff;
+}
+
+/* социальные кнопки  */
+.fa {
+  color: white;
+}
+
+.fa-external-link {
+  color: gray;
+}
+
+.btn-social-icon {
+  margin: 0px 3px;
+}
+
+.btn-google-plus, .btn-youtube, .btn-link {
+  background-color: red;
+}
+
+/* ---------------------------------------- */
+
+/* стили карусели */
+
+.jumbotron {
+  margin: 0px auto;
+  /*padding: 70px 30px;*/
+  background: #ffffff;
+  color: floralwhite;
+}
+
+.carousel {
+  background: #ffffff;
+}
+
+.carousel .item {
+  height: auto;
+}
+
+.carousel .item img {
+  left: 0;
+  /*min-height: 300px;*/
+  /*position: absolute;*/
+  top: 0;
+}
+
+.carousel-inner > .item > .img-responsive {
+  opacity: 0.7; /* Opacity for Modern Browsers */
+  filter: alpha(opacity=70); /* Opacity for IE8 and lower */
+  zoom: 1; /* Fix for IE7 */
+  /*max-height: 900px;*/
+}
+
+.carousel-caption {
+  color: #fff;
+  top: 50%;
+  transform: translateY(-100%);
+}
+
+#carouselButtons {
+  bottom: 0px;
+  position: absolute;
+  right: 0px;
+}
+
+/* ---------------------------------------- */
+
+/* стили кнопок на лэндинг-странице */
+
+.btn-primary-outline {
+  background-color: transparent;
+  border-color: #ccc;
+  color: #d4d4d4;
+  margin: 2px auto;
+}
+
+.btn-primary-outline:hover {
+  color: #343434;
+  background-color: #ebcccc;
+}
+
+/* ----------------------------- */
+
+/* стилизация навигационной панели и панели кнопок */
+#buttonsPanel {
+  border-top: lightgray 3px solid;
+}
+
+#navPanel {
+  border-bottom: lightgray 3px solid;
+}
+
+/* ----------------------------- */
+
+/* стили основных кнопок*/
+.btn.outline {
+  background: none;
+  padding: 8px 18px;
+}
+
+.btn-primary.outline {
+  border: 2px solid darkgray;
+  color: darkgray;
+}
+
+.btn-primary.outline:hover, .btn-primary.outline:focus,
+.btn-primary.outline:active, .btn-primary.outline:visited {
+  #aud-button {
+    color: whitesmoke; // корректировка для кнопки `auditoria`
+  }
+  border-color: darkgray;
+  background-color: darkgray;
+}
+
+.btn-primary.outline:hover {
+  color: @my-bgcolor;
+}
+
+.btn-primary.outline[disabled],
+.btn-primary.outline[disabled]:hover,
+.btn-primary.outline[disabled]:active,
+.btn-primary.outline[disabled]:visited {
+  background-color: @my-bgcolor;
+  color: dimgray;
+  border-color: dimgray;
+}
+
+/* размер glyph */
+.gly-size {
+  font-size: 1.3em;
+}
+
+/* ститли диалоговых окон */
+form.my-dialogies {
+  background-color: @my-bgcolor;
+  h4 {
+    color: darkgray;
+  }
+}
+
+/* стили таблиц */
+.table-title {
+  background-color: lightgrey;
+  border-radius: .5em;
+  padding: .5em 0;
+}
+
+.para, .week, .day {
+  color: @table-color;
+  text-align: center;
+  font-size: medium;
+}
+
+.week, .para {
+  font-size: large;
+  font-weight: bold;
+}
+
+.text-info {
+  color: @table-color !important;
+}
+
+.info {
+  background-color: lightgrey !important;
+}
+
+/* ----------------------------------- */
+
+.modal-content {
+  background-color: @my-bgcolor !important;
+  h4, a:hover {
+    color: darkgrey;
+  }
+  a:hover{
+    font-size: 1.2em;
+  }
+}

@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12">
+      <h3 class="text-center text-info">
+        Наявність вільних аудиторій по корпусах</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-bordered table-striped">
+        <tbody>
+        <template ngFor let-weekName [ngForOf]="weekNames">
+          <tr>
+            <td rowspan="2" class="para">Пара</td>
+            <td class="week" colspan="6"> {{weekName}}</td>
+          </tr>
+          <tr>
+            <template ngFor let-dayName [ngForOf]="dayNamesList">
+              <td class="day">{{dayName}}</td>
+            </template>
+          </tr>
+          <template ngFor let-para [ngForOf]="paraNumberList">
+            <tr>
+              <td class="para">{{para}}</td>
+              <td *ngFor="let day of dayNamesList">
+                <tt-corpus-list [week]="weekName" [day]="day" [para]="para">
+                </tt-corpus-list>
+              </td>
+            </tr>
+          </template>
+        </template>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>

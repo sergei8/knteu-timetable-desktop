@@ -1,0 +1,69 @@
+<div class="form-group">
+  <!-- Форма-->
+  <div class="row form-group">
+    <div class="col-xs-10  col-xs-offset-1 col-sm-8 col-sm-offset-2">
+      <!-- чтобы передать выбранное значение использован one-way-binding-->
+      <!-- путем передачи выбранного значения в поле target.value события change-->
+      <select class="form-control "
+              (change)="learningFormChanged($event.target.value)"
+              (click)="learningFormChanged($event.target.value)">
+        <option value="" selected disabled>-- Форма навчання</option>
+        <option *ngFor="let learningForm of ['Очна','Заочна']">{{learningForm}}</option>
+      </select>
+    </div>
+  </div>
+  <!-- Факултет-->
+  <div class="row form-group">
+    <div class="col-xs-10 col-xs-offset-1  col-sm-8 col-sm-offset-2">
+      <select class="form-control" [disabled]="isLearningFormSelected"
+              (click)="facNameChanged($event.target.value)"
+              (change)="facNameChanged($event.target.value)">
+        <option *ngFor="let facName of facNameList">{{facName}}</option>
+      </select>
+    </div>
+  </div>
+  <!-- Курс -->
+  <div class="row form-group">
+    <div class="col-xs-4 col-xs-offset-1 col-sm-3 col-sm-offset-2">
+      <select class="form-control" [disabled]="isFacNameSelected"
+              (change)="courseChanged($event.target.value)"
+              (click)="courseChanged($event.target.value)">
+        <option *ngFor="let course of courseList">{{course}}</option>
+      </select>
+    </div>
+    <!-- Група -->
+    <div class="col-xs-4 col-xs-offset-2  col-sm-3 col-sm-offset-2">
+      <select class="form-control" [disabled]="isCourseSelected"
+              (change)="groupChanged($event.target.value)"
+              (click)="groupChanged($event.target.value)">
+        <option *ngFor="let group of groupList">{{group}}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ФІЛЬТРИ-->
+  <!-- дисциплина-->
+  <div class="row form-group">
+    <div class="col-xs-10  col-xs-offset-1 col-sm-8 col-sm-offset-2">
+      <select id='dis' class="form-control" [disabled]="isGroupSelected || !isTeacherSelected"
+              (change)="disciplineChanged($event.target.value)"
+              (click)="disciplineChanged($event.target.value)">
+        <option *ngFor="let discipline of disciplineList">{{discipline}}</option>
+      </select>
+    </div>
+  </div>
+  <!-- преподаватель-->
+  <div class="row form-group">
+    <div class="col-xs-10 col-xs-offset-1  col-sm-8 col-sm-offset-2">
+      <select class="form-control" [disabled]="isGroupSelected || !isDisciplineSelected"
+              (change)="teacherChanged($event.target.value)"
+              (click)="teacherChanged($event.target.value)">
+        <option *ngFor="let teacher of teacherList">{{teacher}}</option>
+      </select>
+    </div>
+  </div>
+
+</div>
+
+
+

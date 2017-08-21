@@ -1,0 +1,42 @@
+<!-- copusList - array: [0] - corpus letter, [1] - # of free rooms -->
+
+<div class="row" *ngFor="let corpusList of getAuditoriaByPara()">
+  <div class="col-xs-3 col-sm-3">
+    "{{corpusList[0]}}":
+  </div>
+  <div class="col-xs-2 col-sm-2">
+    {{corpusList[1].length}}
+  </div>
+  <div class="col-xs-6 col-sm-6">
+    <a class="fa fa-external-link" role="button" title="дивитись деталі"
+       (click)="getCorpusDetail(corpusList[0]);roomsList.show();"></a>
+  </div>
+</div>
+
+
+<!-- диалоговое окно -->
+<div class="modal fade" bsModal #roomsList="bs-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Список вільних аудіторій <br />
+          в корпусі '{{corpusLeter}}' на {{week}} {{day}} {{para}} пару</h4>
+        <button type="button" class="close pull-right" aria-label="Close"
+                (click)="roomsList.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <span *ngFor="let room of emptyRoomList">
+            <a (click)="showRoom(room)" type="button">{{room}}</a>,&nbsp;
+          </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" aria-label="Close" role="button" class="btn btn-primary outline pull-right"
+                (click)="roomsList.hide()"> Зачинити
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>

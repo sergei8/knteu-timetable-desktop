@@ -1,0 +1,65 @@
+<div id="baner" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner" role="listbox" >
+    <!--<div class="item active" (transitionend)="mainButtons.setActiveButton('1');">-->
+    <div class="item active">
+      <img class="img-responsive" src="../../assets/img/baner_pic_1.jpg">
+      <div class="container">
+        <div class="carousel-caption">
+          <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+            ut </h2>
+        </div>
+      </div>
+    </div>
+    <!--<div class="item" (transitionend)="mainButtons.setActiveButton('2');">-->
+    <div class="item">
+      <img class="img-responsive" src="../../assets/img/baner_pic_2.jpg">
+      <div class="container">
+        <div class="carousel-caption">
+          <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, </h2>
+        </div>
+      </div>
+    </div>
+    <!--<div class="item" (transitionend)="mainButtons.setActiveButton('3');">-->
+    <div class="item">
+      <img class="img-responsive" src="../../assets/img/baner_pic_3.jpg">
+      <div class="container">
+        <div class="carousel-caption">
+          <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#baner" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#baner" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right gl" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#baner" data-slide-to="0" class="active"></li>
+    <li data-target="#baner" data-slide-to="1"></li>
+    <li data-target="#baner" data-slide-to="2"></li>
+  </ol>
+
+</div>
+
+<!-- меню  с кнопками buttons.component-->
+<div class="row row-content" id="buttonsPanel">
+  <tt-studentbutton></tt-studentbutton>
+  <tt-teacherbutton></tt-teacherbutton>
+  <tt-auditoriabutton></tt-auditoriabutton>
+</div>
