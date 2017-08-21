@@ -30321,7 +30321,7 @@ export const globalSwitches = {
   teacherButtonClicked: false,
   auditoriaButtonClicked: false,
   roomClicked: false,
-  selectedRoom: '  '
+  selectedRoom: ''
 };
 
 // store dialogue form responses
