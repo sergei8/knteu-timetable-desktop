@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ModalComponent} from 'ng2-bs3-modal/ng2-bs3-modal';
 import {BodystudentComponent} from './bodystudent.component';
-import {globalSwitches, studentFormResponse, menuItemNames} from '../../data.service';
+import {sharedData, studentFormResponse, menuItemNames} from '../../data.service';
 
 @Component({
   selector: 'tt-student-dialogue',
@@ -25,8 +25,8 @@ export class DialogueStudentComponent implements OnInit {
 
   //TODO найти возможность сбросить форму в дефолт после нажатия (OnDestroy)!!!
   processForm() {
-    globalSwitches.studentButtonClicked = true;
-    globalSwitches.teacherButtonClicked = globalSwitches.auditoriaButtonClicked = false;
+    sharedData.studentButtonClicked = true;
+    sharedData.roomClicked= sharedData.teacherButtonClicked = sharedData.auditoriaButtonClicked = false;
 
     //TODO: передать dlgStudent на обработку в student-timetable
     this.modal.dismiss();
@@ -36,13 +36,13 @@ export class DialogueStudentComponent implements OnInit {
   // и вызывает метод модальноого окна
   show() {
     this.modal.open();
-    globalSwitches.auditoriaButtonClicked = globalSwitches.studentButtonClicked = false;
+    sharedData.roomClicked = sharedData.auditoriaButtonClicked = sharedData.studentButtonClicked = false;
   }
 
 
   cancel() {
     this.modal.dismiss();
-    globalSwitches.teacherButtonClicked = globalSwitches.studentButtonClicked = globalSwitches.auditoriaButtonClicked = false;
+    sharedData.roomClicked = sharedData.teacherButtonClicked = sharedData.studentButtonClicked = sharedData.auditoriaButtonClicked = false;
   }
 
 

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {globalSwitches} from '../../data.service';
+import {sharedData} from '../../data.service';
 
 @Component({
   selector: 'tt-auditoriabutton',
@@ -14,8 +14,8 @@ export class AuditoriabuttonComponent implements OnInit {
   }
 
   showAuditoriaTable() {
-    globalSwitches.auditoriaButtonClicked = true; // turn on `if` for timetable
-    globalSwitches.studentButtonClicked = globalSwitches.teacherButtonClicked = false;
+    sharedData.auditoriaButtonClicked = true; // turn on `if` for timetable
+    sharedData.roomClicked = sharedData.studentButtonClicked = sharedData.teacherButtonClicked = false;
 
   }
 

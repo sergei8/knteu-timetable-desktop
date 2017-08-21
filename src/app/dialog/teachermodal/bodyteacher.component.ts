@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {DataService, menuItemNames, globalSwitches, teacherFormResponse} from '../../data.service';
+import {DataService, menuItemNames, sharedData, teacherFormResponse} from '../../data.service';
 import * as _ from 'lodash';
 
 @Component({

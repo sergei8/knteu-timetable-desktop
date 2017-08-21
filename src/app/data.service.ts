@@ -30315,8 +30315,8 @@ export const WeekDayPara = {
   }
 };
 
-// global  switches will import in the app.modules
-export const globalSwitches = {
+// common  switches and shared variables
+export const sharedData = {
   studentButtonClicked: false,
   teacherButtonClicked: false,
   auditoriaButtonClicked: false,
@@ -30324,6 +30324,7 @@ export const globalSwitches = {
   selectedRoom: ''
 };
 
+//todo use `interface` instesd !!!
 // store dialogue form responses
 export const studentFormResponse = {
   learningForm: '',
@@ -30338,4 +30339,3 @@ export const teacherFormResponse = {
   discipline: ''
 };
 
-// export const selectedRoom = '';
