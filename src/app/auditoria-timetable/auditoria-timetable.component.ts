@@ -13,9 +13,9 @@ import {
 export class AuditoriaTimetableComponent {
 
   private wdp: any;
-  private weekNames;
-  private dayNamesList;
-  private paraNumberList;
+  weekNames;
+  dayNamesList;
+  paraNumberList;
 
   constructor() {
     this.wdp = $.extend(true, {}, WeekDayPara); // make copy of WeekDayPara

@@ -19,13 +19,13 @@ import * as _ from 'lodash';
 })
 export class StudentTimetableComponent  {
 
-  private selectedItems = studentFormResponse;  // from student menu
-  private teacherButtonClicked = false;
+   selectedItems = studentFormResponse;  // from student menu
+   teacherButtonClicked = false;
 
   private wdp: any;
-  private weekNames = weekNames;
-  private dayNamesList = dayNamesList;
-  private paraNumberList = paraNamberList;
+   weekNames = weekNames;
+   dayNamesList = dayNamesList;
+   paraNumberList = paraNamberList;
 
   constructor(private dataService: DataService) {
     this.wdp = $.extend(true, {}, WeekDayPara);

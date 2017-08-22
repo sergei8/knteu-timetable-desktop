@@ -19,8 +19,8 @@ export class CorpusListComponent implements OnInit {
   @Input() para: string;
 
   emptyRoomList: string[];
-  private corpusLeter: string;
-  private roomNumber: string;
+   corpusLeter: string;
+  // private roomNumber: string;
 
   constructor(private dataService: DataService) {
   }
