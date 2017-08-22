@@ -4,6 +4,10 @@
 /dist
 /tmp
 
+# assets
+/src/assets/img
+/src/assets/db
+
 # dependencies
 /node_modules
 
