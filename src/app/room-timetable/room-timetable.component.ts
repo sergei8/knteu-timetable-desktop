@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {
-  studentFormResponse,
   teacherFormResponse,
   WeekDayPara,
   weekNames,
@@ -18,12 +17,13 @@ import * as _ from 'lodash';
 })
 export class RoomTimetableComponent {
 
-  private roomNumber = sharedData.selectedRoom;
+  roomNumber = sharedData.selectedRoom;
+  showTeacher:boolean = false;
 
   private wdp: any;
-  private weekNames = weekNames;
-  private dayNamesList = dayNamesList;
-  private paraNumberList = paraNamberList;
+  weekNames = weekNames;
+  dayNamesList = dayNamesList;
+  paraNumberList = paraNamberList;
 
   constructor(private dataService: DataService) {
     this.wdp = $.extend(true, {}, WeekDayPara);
@@ -63,8 +63,7 @@ export class RoomTimetableComponent {
     teacherFormResponse.teacherName = teacherName;
     //console.log(teacherFormResponse);
     sharedData.roomClicked = sharedData.auditoriaButtonClicked = sharedData.studentButtonClicked = false;
-
-    sharedData.teacherButtonClicked = true;
+    this.showTeacher = sharedData.teacherButtonClicked = true;
   }
 
   // перейти на начало таблицы

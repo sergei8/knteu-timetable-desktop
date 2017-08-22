@@ -21,15 +21,14 @@ import * as _ from 'lodash';
 
 export class TeacherTimetableComponent implements OnInit, OnDestroy {
 
-  private selectedItems = teacherFormResponse;  // from teacher menu
-  private studentButtonClicked = false;
+  selectedItems = teacherFormResponse;  // from teacher menu
+  studentButtonClicked = false;
 
 
   private wdp: any;
-  // private table: string = '';
-  private weekNames = weekNames;
-  private dayNamesList = dayNamesList;
-  private paraNumberList = paraNamberList;
+  weekNames = weekNames;
+  dayNamesList = dayNamesList;
+  paraNumberList = paraNamberList;
 
   constructor(private dataService: DataService) {
     // pass  timeTable and fill appropriate `wdp` cells
