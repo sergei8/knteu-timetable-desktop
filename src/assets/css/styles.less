@@ -37,6 +37,10 @@ body {
   color: @my-bgcolor;
   height: 4em !important;
   padding: 1.5em 0 !important;
+  a:active, a:hover, a:link, a:visited {
+    color: @my-bgcolor;
+  }
+
 }
 
 #my-navbar.navbar-default { /* #003399 - #0033cc */
@@ -75,7 +79,13 @@ body {
 #my-navbar.navbar-default .navbar-nav > li > a,
 #my-navbar.navbar-default .navbar-nav > li > ul > li > a,
 #my-navbar.navbar-default .navbar-brand {
+  font-family: 'Ruslan Display', cursive;
   color: #999999;
+}
+
+#my-navbar.navbar-default .navbar-brand {
+  font-size: 2em;
+  vertical-align: middle;
 }
 
 #my-navbar.navbar-default .navbar-toggle .icon-bar,
@@ -107,7 +117,6 @@ body {
 
 .jumbotron {
   margin: 0px auto;
-  /*padding: 70px 30px;*/
   background: #ffffff;
   color: floralwhite;
 }
@@ -122,13 +131,11 @@ body {
 
 .carousel .item img {
   left: 0;
-  /*min-height: 300px;*/
-  /*position: absolute;*/
   top: 0;
 }
 
 .carousel-inner > .item > .img-responsive {
-  opacity: 0.7; /* Opacity for Modern Browsers */
+  opacity: 0.8; /* Opacity for Modern Browsers */
   filter: alpha(opacity=70); /* Opacity for IE8 and lower */
   zoom: 1; /* Fix for IE7 */
   margin: auto;
@@ -140,6 +147,15 @@ body {
   color: #fff;
   top: 50%;
   transform: translateY(-100%);
+  p {
+    font-size: large;
+    font-size: 2.5vw;
+    text-align: justify;
+    line-height: 1.1em;
+    font-family: 'Lobster', cursive;
+    color: #fff;
+
+  }
 }
 
 #carouselButtons {
@@ -147,7 +163,6 @@ body {
   position: absolute;
   right: 0px;
 }
-
 
 /* ---------------------------------------- */
 
@@ -182,11 +197,11 @@ body {
 .btn.outline {
   background: none;
   padding: 8px 18px;
-  border-radius: 10px;
 }
 
 .btn-primary.outline {
   border: 2px solid darkgray;
+  border-radius: 10px;
   color: darkgray;
 }
 
@@ -262,3 +277,4 @@ form.my-dialogies {
     font-size: 1.2em;
   }
 }
+
