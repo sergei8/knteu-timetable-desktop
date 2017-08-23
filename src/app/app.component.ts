@@ -8,7 +8,7 @@ import {sharedData} from './data.service';
 export class AppComponent {
 
 
-
+  //activate
   isStudentButtonClicked() {
     return sharedData.studentButtonClicked;
   }
