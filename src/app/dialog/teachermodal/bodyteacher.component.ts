@@ -37,6 +37,7 @@ export class BodyteacherComponent {
 
   // extract teachers list from `timeTable` as array
   getFullTeacherList() {
+    // console.log(Object.keys(this.dataService.timeTable).sort());
     return Object.keys(this.dataService.timeTable).sort();
   }
 
