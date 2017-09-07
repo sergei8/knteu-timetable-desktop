@@ -19,7 +19,7 @@ export class CorpusListComponent implements OnInit {
   @Input() para: string;
 
   emptyRoomList: string[];
-   corpusLeter: string;
+  corpusLeter: string;
   // private roomNumber: string;
 
   constructor(private dataService: DataService) {
@@ -28,19 +28,19 @@ export class CorpusListComponent implements OnInit {
   ngOnInit() {
   }
 
-  // extract auditoria list from timeTable for exact week,day,parf into busyauditoriaListList
+  // extract auditoria list from timeTable for exact week,day,para into busyauditoriaListList
   // compare busyauditoriaListList with getauditorialist() and determine  freeauditoriaList
   // create from emptyroom object {'<corpus.':[<auditoria list>],...}
   //
   getAuditoriaByPara(): any {
 
-    let busyAuditoriaList = this.getBusyRoomList();
+    const busyAuditoriaList = this.getBusyRoomList();
 
     // create list of empty room as difference between all auditoria and busy
-    let emptyRoomList = _.difference(this.dataService.getAuditoriaList(), busyAuditoriaList);
+    const emptyRoomList = _.difference(this.dataService.getAuditoriaList(), busyAuditoriaList);
 
     // create object `room by corpus`
-    let emptyRoomByCorpus = _.groupBy(emptyRoomList, (room) => room[0]);
+    const emptyRoomByCorpus = _.groupBy(emptyRoomList, (room) => this.extractCorpusLetter(room));
 
     // sort by room number
     _.each(emptyRoomByCorpus, corpusList => corpusList.sort());
@@ -61,21 +61,23 @@ export class CorpusListComponent implements OnInit {
     this.corpusLeter = corpus;
 
     // console.log('Detail!', week);
-    let t1 = Date.now();
-    let busyRoomList = this.getBusyRoomList();
-    let emptyRoomList = _.difference(this.dataService.getAuditoriaList(), busyRoomList);
-    let emptyRoomByCorpus = _.groupBy(emptyRoomList, (room) => room[0]);
+    // let t1 = Date.now();
+    const busyRoomList = this.getBusyRoomList();
+    const emptyRoomList = _.difference(this.dataService.getAuditoriaList(), busyRoomList);
+    let emptyRoomByCorpus = _.groupBy(emptyRoomList, (room) => this.extractCorpusLetter(room)); // room[0] - буква корпуса
     //console.log(emptyRoomByCorpus[corpus].sort());
     this.emptyRoomList = emptyRoomByCorpus[corpus].sort();
-    let t2 = Date.now();
-    console.log((t2 - t1) / 1000);
+    /*
+     let t2 = Date.now();
+     console.log((t2 - t1) / 1000);
+     */
 
     // console.log(this.emptyRoomList);
   };
 
   // create busy rooms per week-day-para
   getBusyRoomList() {
-    let busyRoomList = [];
+    const busyRoomList = [];
     let w = this.week;
     let d = this.day;
     let p = this.para;
@@ -84,11 +86,12 @@ export class CorpusListComponent implements OnInit {
       if (w in this.dataService.timeTable[fio]) {
         if (d in this.dataService.timeTable[fio][w]) {
           if (p in this.dataService.timeTable[fio][w][d]) {
-            busyRoomList.push(this.dataService.timeTable[fio][w][d][p][4]);
+            busyRoomList.push(this.dataService.timeTable[fio][w][d][p][4]); // [4] - аудитория
           }
         }
       }
     }
+    // console.log(busyRoomList);
     return busyRoomList;
   }
 
@@ -98,5 +101,17 @@ export class CorpusListComponent implements OnInit {
     sharedData.roomClicked = true;
     sharedData.auditoriaButtonClicked = false;
   }
+
+
+  extractCorpusLetter(room) {
+    if (_.includes(['А', 'Б', 'В', 'Г', 'Д', 'Л', 'М', 'Н', 'Р'], room[0])) {
+      return room[0];
+    }
+    else {
+      return 'ін.';
+    }
+  }
+
+
 
 }

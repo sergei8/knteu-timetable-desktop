@@ -1,13 +1,13 @@
 <!-- copusList - array: [0] - corpus letter, [1] - # of free rooms -->
 
 <div class="row" *ngFor="let corpusList of getAuditoriaByPara()">
-  <div class="col-xs-3 col-sm-3">
+  <div class="col-xs-3 col-sm-3" *ngIf="corpusList[0] != 'ін.'">  <!--   забіл вивод мусора через ngIf-->
     "{{corpusList[0]}}":
   </div>
-  <div class="col-xs-2 col-sm-2">
+  <div class="col-xs-2 col-sm-2" *ngIf="corpusList[0] != 'ін.'">  <!--   забіл вивод мусора через ngIf-->
     {{corpusList[1].length}}
   </div>
-  <div class="col-xs-6 col-sm-6">
+  <div class="col-xs-6 col-sm-6" *ngIf="corpusList[0] != 'ін.'">  <!--   забіл вивод мусора через ngIf-->
     <a class="fa fa-external-link" role="button" title="дивитись деталі"
        (click)="getCorpusDetail(corpusList[0]);roomsList.show();"></a>
   </div>
@@ -19,7 +19,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title pull-left">Список вільних аудіторій <br />
+        <h4 class="modal-title pull-left">Список вільних аудіторій <br/>
           в корпусі '{{corpusLeter}}' на {{week}} {{day}} {{para}} пару</h4>
         <button type="button" class="close pull-right" aria-label="Close"
                 (click)="roomsList.hide()">
