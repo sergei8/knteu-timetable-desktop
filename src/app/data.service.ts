@@ -19,7 +19,8 @@ export class DataService {
 
   // получить данные из файла
   getTimeTable() {
-    return this.http.get('assets/db/time-table.json')
+    // return this.http.get('assets/db/time-table.json')
+    return this.http.get('https://sergei8.github.io/TT-site/assets/db/time-table.json')
       .map(response => response.json());
   }
 
@@ -73,15 +74,15 @@ export class DataService {
   getGroupList() {
 
     let groupNumberList = [];
-    // let groupNumberList: string[] = [];
 
-    for (var fio in this.timeTable) {
-      for (var week in this.timeTable[fio]) {
-        for (var day in this.timeTable[fio][week]) {
-          for (var para in this.timeTable[fio][week][day]) {
+    for (let fio in this.timeTable) {
+      for (let week in this.timeTable[fio]) {
+        for (let day in this.timeTable[fio][week]) {
+          for (let para in this.timeTable[fio][week][day]) {
             let facName = _.values(this.timeTable[fio][week][day][para])[0];
             let courseNumber = _.values(this.timeTable[fio][week][day][para])[1];
-            let groupNumber = _.values(this.timeTable[fio][week][day][para])[2];
+            // let groupNumber = _.values(this.timeTable[fio][week][day][para])[2];
+            let groupNumber = this.extractGroupNumber( _.values(this.timeTable[fio][week][day][para])[2]);
             // push fac. group i number into array if it is not present yet
             if ((facName == studentFormResponse.facName)
               && (courseNumber == studentFormResponse.courseNumber)
@@ -171,7 +172,15 @@ export class DataService {
   }
 
 
+   // извлекает из параметра первую группу, если на лекции их несколько
+   // '1,2,3,4' - выберет 1-ю группу
+  extractGroupNumber(groupsString){
+    return groupsString.split(',')[0];
+  }
+
 }
+
+
 
 // -------------- VARIABLES AND CONSTANTS ----------------------- \\
 

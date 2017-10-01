@@ -17,15 +17,15 @@ import * as _ from 'lodash';
   selector: 'tt-student-timetable',
   templateUrl: './student-timetable.component.html'
 })
-export class StudentTimetableComponent  {
+export class StudentTimetableComponent {
 
-   selectedItems = studentFormResponse;  // from student menu
-   teacherButtonClicked = false;
+  selectedItems = studentFormResponse;  // from student menu
+  teacherButtonClicked = false;
 
   private wdp: any;
-   weekNames = weekNames;
-   dayNamesList = dayNamesList;
-   paraNumberList = paraNamberList;
+  weekNames = weekNames;
+  dayNamesList = dayNamesList;
+  paraNumberList = paraNamberList;
 
   constructor(private dataService: DataService) {
     this.wdp = $.extend(true, {}, WeekDayPara);
@@ -38,13 +38,22 @@ export class StudentTimetableComponent  {
           _.each(day, (para, paraNumber) => {
               if (this.selectedItems.facName === para[0]
                 && this.selectedItems.courseNumber === para[1]
-                && this.selectedItems.groupNumber === para[2]) {
+                // проверяем есть ли выбранная группа в списка групп, когда лекция
+                && para[2].split(',').indexOf(this.selectedItems.groupNumber) !== -1) {
                 // apply filters
                 if (this.selectedItems.discipline.trim() === para[3].trim().replace(/ +/g, ' ')
                   || this.selectedItems.teacher === teacherName
                   || (this.selectedItems.discipline === '' && this.selectedItems.teacher === '')) {
                   // build array to fill the appropriated `paraNumber` cell
-                  this.wdp[weekName][dayName][paraNumber] = [].concat(para[5], para[3], para[4], teacherName);
+                  // для лабораторных возможно 2 преподавателя
+                  // проверяем, заполнена ли пара 1-м преподавателем
+                  // если да, то добавляем в эту ячейку второго
+                  if (this.wdp[weekName][dayName][paraNumber].length !== 0) {
+                    // this.wdp[weekName][dayName][paraNumber] = concat(para[5], para[3], para[4], teacherName);
+                    console.log(this.wdp[weekName][dayName][paraNumber]);
+                  } else {
+                    this.wdp[weekName][dayName][paraNumber] = [].concat(para[5], para[3], para[4], teacherName);
+                  }
                 }
               }
             }
