@@ -52,60 +52,6 @@ export class TeacherTimetableComponent implements OnInit, OnDestroy {
 
   }
 
-  /*
-   buildTable(): string {
-
-   this.table = '';
-   this.table = '<table class="table table-bordered table-striped" ><tbody>';
-   for (let w in weekNames) {
-   this.table += '<tr><td rowspan="2" class="para" >Пара</td> ' +
-   '<td class="week" colspan="6"  >' + weekNames[w] + '</tr>';
-   this.table += '<tr><td class="day">' + dayNamesList[0] + '</td>' +
-   '<td class="day">' + dayNamesList[1] + '</td>' +
-   '<td class="day">' + dayNamesList[2] + '</td>' +
-   '<td class="day">' + dayNamesList[3] + '</td>' +
-   '<td class="day">' + dayNamesList[4] + '</td>' +
-   '<td class="day">' + dayNamesList[5] + '</td> </tr>';
-   for (let p = 1; p <= 7; p++) {
-   this.table += '<tr >';
-   this.table += '<td  class="para">' + p + '</td>';
-   for (let d in dayNamesList) {
-   try {
-   if (this.wdp[weekNames[w]][dayNamesList[d]][p][2] === undefined) {
-   this.table += '<td>&nbsp;</td>';
-   }
-
-   else {
-   this.table += '<td class="info"> <b>' + this.wdp[weekNames[w]][dayNamesList[d]][p][0] + ' </b>';
-   this.table += this.wdp[weekNames[w]][dayNamesList[d]][p][1] + '<br /><b>';
-   this.table += this.wdp[weekNames[w]][dayNamesList[d]][p][2] + ' </b>';
-   this.table += this.wdp[weekNames[w]][dayNamesList[d]][p][3] + ' ';
-   this.table += this.wdp[weekNames[w]][dayNamesList[d]][p][4] + '/';
-   this.table += this.wdp[weekNames[w]][dayNamesList[d]][p][5];
-   this.table += '</td>';
-   }
-   }
-   catch (e) {
-   this.table += '<td>розклад невідформатовано';
-   }
-   finally {
-   this.table += '</td>';
-   }
-   }
-   this.table += '</tr>'
-   }
-   }
-   this.table += '</tbody></table>';
-
-   // перейти на начало таблицы
-   const element = document.querySelector('#buttonsPanel');
-   if (element) {
-   element.scrollIntoView();
-   }
-
-   return this.table;
-   }
-   */
 
   ngOnInit() {
   }
@@ -118,8 +64,17 @@ export class TeacherTimetableComponent implements OnInit, OnDestroy {
   getCell(week, day, para, item = 0) {
 
     try {
-      return this.wdp[this.weekNames[week]][this.dayNamesList[day]]
-        [this.paraNumberList[para]][item];
+      // если в пар - список (лекция), берем первую
+      if (item === 5) {
+        console.log(this.wdp[this.weekNames[week]][this.dayNamesList[day]]
+          [this.paraNumberList[para]][item]);
+        return this.wdp[this.weekNames[week]][this.dayNamesList[day]]
+          [this.paraNumberList[para]][item].split(',')[0];
+
+      } else {
+        return this.wdp[this.weekNames[week]][this.dayNamesList[day]]
+          [this.paraNumberList[para]][item];
+      }
     }
     catch (e) {
       return 'розклад не відформатовано';

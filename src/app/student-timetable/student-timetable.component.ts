@@ -84,7 +84,7 @@ export class StudentTimetableComponent {
 
   // возвражает количество преподавателей на пару (м.б. 1 или 2)
   getPrepodsCount(week, day, para) {
-    console.log(_.range(this.wdp[this.weekNames[week]][this.dayNamesList[day]][this.paraNumberList[para]].length));
+    // console.log(_.range(this.wdp[this.weekNames[week]][this.dayNamesList[day]][this.paraNumberList[para]].length));
     return _.range(this.wdp[this.weekNames[week]][this.dayNamesList[day]][this.paraNumberList[para]].length);
   }
 
