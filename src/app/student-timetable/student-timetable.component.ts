@@ -49,10 +49,12 @@ export class StudentTimetableComponent {
                   // проверяем, заполнена ли пара 1-м преподавателем
                   // если да, то добавляем в эту ячейку второго
                   if (this.wdp[weekName][dayName][paraNumber].length !== 0) {
-                    // this.wdp[weekName][dayName][paraNumber] = concat(para[5], para[3], para[4], teacherName);
-                    console.log(this.wdp[weekName][dayName][paraNumber]);
+                    this.wdp[weekName][dayName][paraNumber] = this.wdp[weekName][dayName][paraNumber]
+                      .concat([[para[5], para[3], para[4], teacherName]]);
+                    // console.log('******', this.wdp[weekName][dayName][paraNumber]);
                   } else {
-                    this.wdp[weekName][dayName][paraNumber] = [].concat(para[5], para[3], para[4], teacherName);
+                    this.wdp[weekName][dayName][paraNumber] = [[].concat(para[5], para[3], para[4], teacherName)];
+                    // console.log(this.wdp[weekName][dayName][paraNumber]);
                   }
                 }
               }
@@ -61,19 +63,29 @@ export class StudentTimetableComponent {
         )
       )
     );
+    // console.log(this.wdp);
   }
 
 
   /* return content for week-day-para cell */
-  getCell(week, day, para, item = 0) {
+  getCell(week, day, para, prep = 0, item = 0) {
+
+    const paraContent = this.wdp[this.weekNames[week]][this.dayNamesList[day]][this.paraNumberList[para]];
 
     try {
-      return this.wdp[this.weekNames[week]][this.dayNamesList[day]]
-        [this.paraNumberList[para]][item];
+      // console.log(paraContent[0]);
+      return paraContent[prep][item];
     }
     catch (e) {
       return 'розклад не відформатовано';
     }
+  }
+
+
+  // возвражает количество преподавателей на пару (м.б. 1 или 2)
+  getPrepodsCount(week, day, para) {
+    console.log(_.range(this.wdp[this.weekNames[week]][this.dayNamesList[day]][this.paraNumberList[para]].length));
+    return _.range(this.wdp[this.weekNames[week]][this.dayNamesList[day]][this.paraNumberList[para]].length);
   }
 
   goToTeacherTable(teacherName) {

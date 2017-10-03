@@ -23,14 +23,16 @@
         <tr>
           <td class="day">{{para+1}}</td>
           <template ngFor let-day [ngForOf]="[0,1,2,3,4]">
-            <td [ngClass]="(getCell(week,day,para) === undefined) ? '' : 'info' ">
-              <b>{{getCell(week,day,para,0)}} </b>
-              {{getCell(week,day,para,1)}} <br>
-              <b>{{getCell(week,day,para,2)}} </b>
-              <a (click)="goToTeacherTable(getCell(week,day,para,3))"
-                 title="дивитись розклад викладача">
-                {{getCell(week,day,para,3)}}
-              </a>
+            <td [ngClass]="getPrepodsCount(week,day,para)[0] === undefined ? '' : 'info' ">
+              <template ngFor let-prep [ngForOf]=getPrepodsCount(week,day,para)>
+                <b>{{getCell(week, day, para, prep, 0)}} </b>
+                {{getCell(week,day,para, prep, 1)}} <br>
+                {{getCell(week,day,para,prep, 2)}}
+                <a (click)="goToTeacherTable(getCell(week,day,para,prep, 3))"
+                   title="дивитись розклад викладача">
+                  {{getCell(week,day,para,prep,3)}}
+                </a><br />
+              </template>
             </td>
           </template>
         </tr>
@@ -44,4 +46,4 @@
 <!--перейти на начало таблицы-->
 <p>{{goTop()}}</p>
 
-<tt-teacher-timetable *ngIf="teacherButtonClicked" ></tt-teacher-timetable>
+<tt-teacher-timetable *ngIf="teacherButtonClicked"></tt-teacher-timetable>
