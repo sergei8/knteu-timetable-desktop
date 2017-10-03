@@ -13,6 +13,7 @@ import {
 } from '../data.service';
 
 import * as _ from 'lodash';
+import {isUndefined} from "util";
 
 @Component({
   selector: 'tt-teacher-timetable',
@@ -63,17 +64,17 @@ export class TeacherTimetableComponent implements OnInit, OnDestroy {
   /* return content for week-day-para cell */
   getCell(week, day, para, item = 0) {
 
+    const paraContent = this.wdp[this.weekNames[week]][this.dayNamesList[day]]
+            [this.paraNumberList[para]];
     try {
       // если в пар - список (лекция), берем первую
       if (item === 5) {
-        console.log(this.wdp[this.weekNames[week]][this.dayNamesList[day]]
-          [this.paraNumberList[para]][item]);
-        return this.wdp[this.weekNames[week]][this.dayNamesList[day]]
-          [this.paraNumberList[para]][item].split(',')[0];
-
+        // делаем это если ячейка не пустая
+        if (paraContent.length !== 0) {
+          return paraContent[item].split(',')[0];
+        }
       } else {
-        return this.wdp[this.weekNames[week]][this.dayNamesList[day]]
-          [this.paraNumberList[para]][item];
+        return paraContent[item];
       }
     }
     catch (e) {
