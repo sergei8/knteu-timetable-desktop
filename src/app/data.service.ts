@@ -81,7 +81,6 @@ export class DataService {
           for (let para in this.timeTable[fio][week][day]) {
             let facName = _.values(this.timeTable[fio][week][day][para])[0];
             let courseNumber = _.values(this.timeTable[fio][week][day][para])[1];
-            // let groupNumber = _.values(this.timeTable[fio][week][day][para])[2];
             let groupNumber = this.extractGroupNumber( _.values(this.timeTable[fio][week][day][para])[2]);
             // push fac. group i number into array if it is not present yet
             if ((facName == studentFormResponse.facName)

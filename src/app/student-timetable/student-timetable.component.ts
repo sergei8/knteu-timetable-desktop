@@ -51,10 +51,8 @@ export class StudentTimetableComponent {
                   if (this.wdp[weekName][dayName][paraNumber].length !== 0) {
                     this.wdp[weekName][dayName][paraNumber] = this.wdp[weekName][dayName][paraNumber]
                       .concat([[para[5], para[3], para[4], teacherName]]);
-                    // console.log('******', this.wdp[weekName][dayName][paraNumber]);
                   } else {
                     this.wdp[weekName][dayName][paraNumber] = [[].concat(para[5], para[3], para[4], teacherName)];
-                    // console.log(this.wdp[weekName][dayName][paraNumber]);
                   }
                 }
               }
@@ -63,7 +61,6 @@ export class StudentTimetableComponent {
         )
       )
     );
-    // console.log(this.wdp);
   }
 
 
